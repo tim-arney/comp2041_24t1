@@ -12,21 +12,21 @@ $ ls
 ```
 
 What will be displayed as a result of the following `echo` commands:
-
+["a", "b", "c"]
 
 |    |        Command         | Output |
 |---:|:-----------------------|:-------|
-| a. | `$ echo a   b   c`     | `???`
-| b. | `$ echo "a   b   c"`   | `???`
-| c. | `$ echo $y`            | `???`
-| d. | `$ echo x$x`           | `???`
-| e. | `$ echo $xx`           | `???`
-| f. | `$ echo ${x}x`         | `???`
-| g. | `$ echo "$y"`          | `???`
-| h. | `$ echo '$y'`          | `???`
-| i. | `$ echo $($y)`         | `???`
-| j. | `$ echo $($z)`         | `???`
-| k. | `$ echo $(echo a b c)` | `???`
+| a. | `$ echo a   b   c`     | `a b c`
+| b. | `$ echo "a   b   c"`   | `a   b   c`
+| c. | `$ echo $y`            | `Y Y`
+| d. | `$ echo x$x`           | `x2`
+| e. | `$ echo $xx`           | ``
+| f. | `$ echo ${x}x`         | `2x`
+| g. | `$ echo "$y"`          | `Y Y`
+| h. | `$ echo '$y'`          | `$y`
+| i. | `$ echo $($y)`         | `error: Y not found`
+| j. | `$ echo $($z)`         | `a b c`
+| k. | `$ echo $(echo a b c)` | `a b c`
 
 
 ### Q2
@@ -89,55 +89,70 @@ What will be the output of the following:
 1. `./args x y   z`
 
     ```
-
+    #args = 3
+    arg[1] = "x"
+    arg[2] = "y"
+    arg[3] = "z"
     ```
 
 2. `./args $(ls)`
 
     ```
-
+    #args = 3
+    arg[1] = "a"
+    arg[2] = "b"
+    arg[3] = "c
     ```
 
 
 3. `./args $y`
 
     ```
-
+    #args = 2
+    arg[1] = "Y"
+    arg[2] = "Y"
+    
     ```
 
 
 4. `./args "$y"`
 
     ```
-
+    #args = 1
+    arg[1] = "Y Y"
     ```
 
 
 5. `./args $(echo "$y")`
 
     ```
-
+    #args = 2
+    arg[1] = "Y"
+    arg[2] = "Y"
     ```
 
 
-6. `./args $x$x$x`
+6. `./args $x$x$x` -> ./args 222
 
     ```
-
+    #args = 1
+    arg[1] = "222"
     ```
 
 
 7. `./args $x$y`
 
     ```
-
+    #args = 2
+    arg[1] = "2Y"
+    arg[2] = "Y"
     ```
 
 
 8. `./args $xy`
 
     ```
-
+    #args = 0
     ```
 
 
@@ -152,6 +167,11 @@ my_first_shell_script.sh: command not found
 ```
 
 Explain the possible causes for this, and describe how to rectify them.
+
+1. Add current directory to the path (or pass to shell binary)
+2. Make sure the first line is #!/bin/dash (or some shell that does exist)
+3. Make sure permissions are set to executable (or pass to shell binary)
+4. Make sure there are no non-Unix characters (e.g. `\r\n` in Windows)
 
 
 ### Q4
@@ -366,7 +386,7 @@ pairs from its standard input, and writes (studentID, grade) pairs to its standa
 output. The input pairs are written on a single line, separated by spaces, and the 
 output should use a similar format. The script should also check whether the 
 second value on each line looks like a valid mark, and output an appropriate 
-message if it does not The script can ignore any extra data occurring after the 
+message if it does not. The script can ignore any extra data occurring after the 
 mark on each line.
 
 Consider the following input and corresponding output to the program:
