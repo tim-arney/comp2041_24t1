@@ -14,17 +14,19 @@ $ ls
 What will be displayed as a result of the following `echo` commands:
 
 
-1. `$ echo a   b   c`           -> ``
-2. `$ echo "a   b   c"`         -> ``
-3. `$ echo $y`                  -> ``
-4. `$ echo x$x`                 -> ``
-5. `$ echo $xx`                 -> ``
-6. `$ echo ${x}x`               -> ``
-7. `$ echo "$y"`                -> ``
-8. `$ echo '$y'`                -> ``
-9. `$ echo $($y)`               -> ``
-10. `$ echo $($z)`              -> ``
-11. `$ echo $(echo a b c)`      -> ``
+|    |        Command         | Output |
+|---:|:-----------------------|:-------|
+| a. | `$ echo a   b   c`     | `???`
+| b. | `$ echo "a   b   c"`   | `???`
+| c. | `$ echo $y`            | `???`
+| d. | `$ echo x$x`           | `???`
+| e. | `$ echo $xx`           | `???`
+| f. | `$ echo ${x}x`         | `???`
+| g. | `$ echo "$y"`          | `???`
+| h. | `$ echo '$y'`          | `???`
+| i. | `$ echo $($y)`         | `???`
+| j. | `$ echo $($z)`         | `???`
+| k. | `$ echo $(echo a b c)` | `???`
 
 
 ### Q2
