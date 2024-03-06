@@ -3,6 +3,7 @@
 # TODO:
 
 # - make time difference more precise/accurate
+# - ensure output is sorted by date
 # - avoid temp files?
 # - duplicate checks?
 
