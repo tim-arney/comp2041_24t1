@@ -7,6 +7,11 @@
 # - avoid temp files?
 # - duplicate checks?
 
+if [ ! -f deadlines ]; then
+    echo "No deadlines file found"
+    exit 1
+fi
+
 overdue="$(mktemp)"
 upcoming="$(mktemp)"
 trap 'rm "$overdue" "$upcoming"' INT HUP QUIT TERM EXIT
@@ -15,6 +20,7 @@ echo
 echo -n "Now: "
 date +"%a %b %d, %T"
 
+sort -t, -k2,2 deadlines | uniq |
 while IFS=, read -r task due _; do
 
     if [ -z "$task" ]; then
@@ -39,7 +45,7 @@ while IFS=, read -r task due _; do
     else
         echo "$task: $print_due ($date_diff ${days})" >> "$upcoming"
     fi
-done < deadlines
+done
 
 echo
 echo "------------- overdue ---------------"
