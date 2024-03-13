@@ -1,0 +1,27 @@
+#! /usr/bin/env dash
+
+# =============================================================================
+# pushy-init: create an empty pushy repository
+#
+# Written by Tim Arney for COMP2041/9044, 24T1
+#
+# WARNING: THIS IS FOR DEMO PURPOSES ONLY, 
+#          NOT AN ACTUAL (PARTIAL) SOLUTION!
+# =============================================================================
+
+pushy_dir=".pushy"
+command=$(basename $0)
+
+if [ "$#" -ne 0 ]; then
+    echo "usage: $command" 1>&2
+    exit 1
+fi
+
+if [ -d "$pushy_dir" ]; then
+    echo "$command: error: $pushy_dir already exists" 1>&2
+    exit 1
+fi
+
+mkdir -- "$pushy_dir" || exit 1
+echo "Initialized empty pushy repository in $pushy_dir"
+
