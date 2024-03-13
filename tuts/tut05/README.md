@@ -30,7 +30,7 @@ How does this differ from `pushy-init`?
 
 `pushy-init` creates a `.pushy` directory, if it does not exist
 
-- _may_ make the index and a commit tracker file, but this is entirely up to you
+- _may_ initialise other things within `.pushy`, but this is entirely up to you
 - you can store anything you like inside `.pushy`
 
 `git init` creates a `.git` directory, if it does not exist
@@ -76,6 +76,8 @@ up to you.
 Apart from the `pushy-*` scripts what else do you need to submit (and give an example)?
 
 You need to submit 10 test files, `test00.sh` ... `test09.sh`.
+
+See example [test00.sh](q7/test00.sh)
 
 ### Q8
 
