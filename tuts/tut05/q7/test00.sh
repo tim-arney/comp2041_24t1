@@ -1,17 +1,17 @@
 #! /usr/bin/env dash
 
-# ===========================================
-# test script for pushy-init
+# ==============================================================================
+# Test the pushy-init command
 #
 # Written by Tim Arney
 # for COMP2041/9044, 24T1
-#============================================
+#===============================================================================
 
 # Add the current directory to the PATH so scripts can still be executed
 # after we cd
 PATH="$PATH:$(pwd)"
 
-# Create a temporary directory for the test
+# Create a temporary directory for the test and cd into it
 test_dir=$(mktemp -d)
 cd "$test_dir" || exit 1
 
